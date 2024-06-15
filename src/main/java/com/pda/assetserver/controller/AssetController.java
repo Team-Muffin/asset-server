@@ -41,11 +41,4 @@ public class AssetController {
                 .targets(targets)
             .build()));
     }
-
-    @GetMapping("/test")
-    @Operation(summary = "테스트", description = "고객 자산 정보 조회 (만약 없을 시에는 creaet)")
-    @ApiResponse(responseCode = "200", description = "성공")
-    public GlobalResponse test() {
-        return ApiUtils.success("자산 조회 성공", 1);
-    }
 }
