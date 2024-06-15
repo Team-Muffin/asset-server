@@ -1,0 +1,20 @@
+-- Corporation sql
+INSERT INTO corporation VALUES (1,'SH수협은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_SH_Profile.png');
+INSERT INTO corporation VALUES (2,'NH농협은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_NH_Profile.png');
+INSERT INTO corporation VALUES (3,'DGB대구은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_DAEGU_Profile.png');
+INSERT INTO corporation VALUES (4,'전북은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_JEONBUK_Profile.png');
+INSERT INTO corporation VALUES (5,'경남은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_KYOUNGNAM_Profile.png');
+INSERT INTO corporation VALUES (6,'제주은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_JEJU_Profile.png');
+INSERT INTO corporation VALUES (7,'IBK기업은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_IBK_Profile.png');
+INSERT INTO corporation VALUES (8,'광주은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_KWANGJU_Profile.png');
+INSERT INTO corporation VALUES (9,'SC제일은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_SC_Profile.png');
+INSERT INTO corporation VALUES (10,'부산은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_BUSAN_Profile.png');
+INSERT INTO corporation VALUES (11,'신한은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_SHINHAN_Profile.png');
+INSERT INTO corporation VALUES (12,'우리은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_WOORI_Profile.png');
+INSERT INTO corporation VALUES (13,'KDB산업은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_KDB_Profile.png');
+INSERT INTO corporation VALUES (14,'케이뱅크','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_K_Profile.png');
+INSERT INTO corporation VALUES (15,'하나은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_HANA_Profile.png');
+INSERT INTO corporation VALUES (16,'카카오뱅크','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_KAKAO_Profile.png');
+INSERT INTO corporation VALUES (17, 'KB국민은행','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_KB_Profile.png');
+INSERT INTO corporation VALUES (18,'토스뱅크','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_TOSS_Profile.png');
+INSERT INTO corporation VALUES (19,'신한투자증권','https://financial.pstatic.net/pie/common-bi/1.0.2/images/BK_SHINHAN_Profile.png');

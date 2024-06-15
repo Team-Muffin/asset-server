@@ -1,13 +1,13 @@
-package com.pda.asssetserver;
+package com.pda.assetserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AsssetServerApplication {
+public class AssetServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AsssetServerApplication.class, args);
+        SpringApplication.run(AssetServerApplication.class, args);
     }
 
 }
