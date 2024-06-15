@@ -1,0 +1,44 @@
+server:
+  port: 7979
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+spring:
+  application:
+    name: asset-server
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:4343/asset-db?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: root
+
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/insert_*.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show-sql: true
+        highlight_sql: true
+        use_sql_comments: true
+        format_sql: true
+        default_batch_fetch_size: 1000
+    defer-datasource-initialization: true
+
+springdoc:
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  packages-to-scan: com.pda.assetserver
+  swagger-ui:
+    operations-sorter: alpha
+    use-root-path: true
+    persist-authorization: true
+
+
