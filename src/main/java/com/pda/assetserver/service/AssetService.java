@@ -27,6 +27,7 @@ import com.pda.assetserver.service.dto.res.CardResponse;
 import com.pda.assetserver.service.dto.res.PortfolioResponse;
 import com.pda.assetserver.utils.cash.CashUtils;
 import com.pda.assetserver.utils.enums.AccountType;
+import com.pda.assetserver.utils.exceptions.ForbiddenException;
 import com.pda.assetserver.utils.exceptions.InternalServerException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -86,6 +87,10 @@ public class AssetService {
 
         if (optionalUser.isEmpty())
             return generateAllAsset(socialId, request);
+
+
+        if (!optionalUser.get().getContact().equals(request.getContact()))
+            throw new ForbiddenException("고객 권한 없음");
 
         List<? extends Asset> assets = assetRepository.findByUser(optionalUser.get());
         List<BankAccount> accounts = new ArrayList<>();
