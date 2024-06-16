@@ -40,4 +40,16 @@ public class ExceptionController {
             .toList()
             .toString());
     }
+
+    @ExceptionHandler(UnAuthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public GlobalResponse<Void> handleUnauthorizedException(final UnAuthorizedException e) {
+        return ApiUtils.exception(e.getMessage());
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public GlobalResponse<Void> handleForbiddenException(final ForbiddenException e) {
+        return ApiUtils.exception(e.getMessage());
+    }
 }
