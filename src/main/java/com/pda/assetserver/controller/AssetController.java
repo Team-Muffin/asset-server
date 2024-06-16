@@ -28,7 +28,7 @@ public class AssetController {
     private final AssetService assetService;
 
     @GetMapping
-    @Operation(summary = "자산 정보 조회", description = "고객 자산 정보 조회 (만약 없을 시에는 create)")
+    @Operation(summary = "자산 정보 조회(계좌 연결)", description = "고객 자산 정보 조회 (만약 없을 시에는 create)")
     @SwaggerAuth
     @ApiResponse(responseCode = "200", description = "성공")
     public GlobalResponse<AssetInfoResponse> getUserAsset(@UserInfo UserRequest user,
