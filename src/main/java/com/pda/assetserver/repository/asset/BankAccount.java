@@ -41,4 +41,13 @@ public class BankAccount extends Asset {
 
     @Column(name = "return_rate")
     private Double returnRate;
+
+    public void witdraw(long amount) {
+        if (cash-amount < 0) throw new RuntimeException("Invalid amount");
+        this.cash -= amount;
+    }
+
+    public void deposit(long amount) {
+        this.cash += amount;
+    }
 }
