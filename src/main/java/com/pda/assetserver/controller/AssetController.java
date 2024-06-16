@@ -6,6 +6,7 @@ import com.pda.assetserver.controller.resolver.UserRequest;
 import com.pda.assetserver.service.AssetService;
 import com.pda.assetserver.service.dto.req.GetAssetInfoServiceRequest;
 import com.pda.assetserver.service.dto.res.AssetInfoResponse;
+import com.pda.assetserver.service.dto.res.AssetSummaryResponse;
 import com.pda.assetserver.utils.api.ApiUtils;
 import com.pda.assetserver.utils.api.GlobalResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @Tag(name = "Asset", description = "유저 자산 관련 API 입니다")
@@ -40,5 +42,13 @@ public class AssetController {
                 .contact(user.getContact())
                 .targets(targets)
             .build()));
+    }
+
+    @GetMapping("/summary")
+    @Operation(summary = "보유 자산 목록 조회", description = "고객 보유 자산 목록 조회 (연결 이후 사용 가능)")
+    @SwaggerAuth
+    @ApiResponse(responseCode = "200", description = "성공")
+    public GlobalResponse<List<AssetSummaryResponse>> getUserAsset(@UserInfo UserRequest user) {
+        return ApiUtils.success("자산 조회 성공", assetService.getAssetSummary(user));
     }
 }

@@ -1,5 +1,6 @@
 package com.pda.assetserver.service;
 
+import com.pda.assetserver.controller.resolver.UserRequest;
 import com.pda.assetserver.repository.asset.Asset;
 import com.pda.assetserver.repository.asset.AssetRepository;
 import com.pda.assetserver.repository.asset.BankAccount;
@@ -23,12 +24,14 @@ import com.pda.assetserver.repository.user.UserRepository;
 import com.pda.assetserver.service.dto.req.GetAssetInfoServiceRequest;
 import com.pda.assetserver.service.dto.res.AccountResponse;
 import com.pda.assetserver.service.dto.res.AssetInfoResponse;
+import com.pda.assetserver.service.dto.res.AssetSummaryResponse;
 import com.pda.assetserver.service.dto.res.CardResponse;
 import com.pda.assetserver.service.dto.res.PortfolioResponse;
 import com.pda.assetserver.utils.cash.CashUtils;
 import com.pda.assetserver.utils.enums.AccountType;
 import com.pda.assetserver.utils.exceptions.ForbiddenException;
 import com.pda.assetserver.utils.exceptions.InternalServerException;
+import com.pda.assetserver.utils.exceptions.UnAuthorizedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,6 +82,37 @@ public class AssetService {
             builder.funds(result.getFunds());
 
         return builder.build();
+    }
+
+    public List<AssetSummaryResponse> getAssetSummary(final UserRequest userRequest) {
+        String socialId = userRequest.getSocialIdFront()+"-"+userRequest.getSocialIdBack();
+        User user = userRepository.findById(socialId)
+            .orElseThrow(() -> new UnAuthorizedException("고객이 존재하지 않음"));
+
+        if (!user.getContact().equals(userRequest.getContact()))
+            throw new ForbiddenException("고객 권한 없음");
+
+        List<AssetSummaryResponse> response = new ArrayList<>();
+        for(Asset asset:  assetRepository.findByUser(user)) {
+            Product product = asset.getProduct();
+
+            if (product.getPType().equals("CARD")) {
+                response.add(AssetSummaryResponse.builder()
+                        .name(product.getName())
+                        .productType(product.getPType())
+                        .thumbnail(((CardProduct) product).getCardImage())
+                    .build());
+            } else {
+                response.add(AssetSummaryResponse.builder()
+                        .name(product.getName())
+                        .productType(product.getPType())
+                        .thumbnail(product.getCorporation().getProfileImage())
+                        .corpName(product.getCorporation().getName())
+                    .build());
+            }
+        }
+
+        return response;
     }
 
     private AssetInfoResponse getUserInfoWithAll(final GetAssetInfoServiceRequest request) {

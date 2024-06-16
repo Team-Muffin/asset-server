@@ -45,7 +45,7 @@ public class TransferService {
         if (fromAccount.getCash() < request.getAmount())
             throw new BadRequestException("잔액이 부족합니다");
 
-        fromAccount.witdraw(request.getAmount());
+        fromAccount.withdraw(request.getAmount());
         toAccount.deposit(request.getAmount());
 
         bankAccountRepository.save(fromAccount);
