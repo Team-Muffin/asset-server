@@ -227,8 +227,8 @@ public class AssetService {
         Collections.shuffle(savings);
 
         Random random = new Random();
-        int depositPick = random.nextInt(4)+1;
-        int savingsPick = random.nextInt(4)+1;
+        int depositPick = random.nextInt(3)+2;
+        int savingsPick = random.nextInt(3)+2;
 
         List<Product> products = new ArrayList<>();
         for(int i=0; i<depositPick; i++)
