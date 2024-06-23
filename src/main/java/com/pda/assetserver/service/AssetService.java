@@ -236,8 +236,8 @@ public class AssetService {
         for(int i=0; i<savingsPick; i++)
             products.add(savings.get(i));
 
-        products.add(productRepository.findById(413L).orElseThrow(
-            () -> new InternalServerException("413에 해당하는 CMA 계좌를 찾지 못했습니다.")));
+        products.add(productRepository.findById(144L).orElseThrow(
+            () -> new InternalServerException("144에 해당하는 CMA 계좌를 찾지 못했습니다.")));
 
         return products;
     }
