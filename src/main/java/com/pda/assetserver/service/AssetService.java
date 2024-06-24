@@ -394,6 +394,7 @@ public class AssetService {
                 CardProduct card = (CardProduct) cardAsset.getProduct();
                 return CardResponse.builder()
                 .id(cardAsset.getId())
+                .corpName(cardAsset.getProduct().getCorporation().getName())
                 .cardNumber(cardAsset.getCardNumber())
                 .image(card.getCardImage())
                 .name(card.getName())

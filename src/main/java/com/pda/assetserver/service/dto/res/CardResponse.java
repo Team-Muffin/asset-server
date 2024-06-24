@@ -10,6 +10,7 @@ import lombok.Getter;
 @Builder
 public class CardResponse {
     private Long id;
+    private String corpName;
     private String cardNumber;
     private String name;
     private String image;
