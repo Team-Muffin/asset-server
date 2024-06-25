@@ -382,6 +382,7 @@ public class AssetService {
                     .code(stock.getCode())
                     .name(stock.getName())
                     .stockType("D")
+                    .dartCode(stock.getDartCode())
                     .quantity(stockAsset.getQuantity())
                     .build();
             })

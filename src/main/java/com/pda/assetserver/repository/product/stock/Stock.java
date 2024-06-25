@@ -17,6 +17,9 @@ public class Stock {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "dart_code")
+    private String dartCode;
+
     @Column(name = "price")
     private double price;
 
